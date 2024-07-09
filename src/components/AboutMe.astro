@@ -1,11 +1,17 @@
 ---
 import Card from "./Card/index.astro";
+import Now from "./Now.astro"
+import ExperienceCard from "./ExperienceCard.astro";
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About me">
-  <div class="flex flex-col gap-2">
-    <p class="text-sm font-light">
-      Hi, I'm Gianmarco, a front-end software developer from Italy.
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="Experiencia">
+  <div class="flex flex-col gap-6">
+    <Now />
+    <ExperienceCard title="FullStack Developer" company="Memo"  
+    description="Programador en una startup irlandesa ubicada en Galway. Desarrollo de un programa de fidelización de clientes."/>
+    {/* <p class="text-sm font-light">
+      Aquí irá la experencia.
+      Una card por experiencia
       <br />
       My primary tools of choice includes:
       <ul class="list-disc list-inside">
@@ -27,5 +33,6 @@ import Card from "./Card/index.astro";
       job, even if it's not on my usual list. My goal is to find the right
       solution for each project.
     </p>
+    */}
   </div>
 </Card>

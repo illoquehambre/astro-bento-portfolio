@@ -1,0 +1,19 @@
+---
+import  Card from '../Card/index.astro'
+
+interface Props {
+  slug?: string;
+  title?: string;
+  description?: string;
+  
+}
+
+const { title, slug, description } = Astro.props;
+---
+
+<Card href={slug} height="h-auto" color='secondary'>
+    <div class="text-white flex gap-4 items-center">
+      <h2 class="font-bold text-xl">{title}</h2>
+      <p class="font-light text-sm">{description}</p>
+    </div>
+  </Card>

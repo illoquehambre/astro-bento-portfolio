@@ -55,6 +55,17 @@ export default defineConfig({
         800: "#A01B2B",
         900: "#891321",
       },
+      secondary: {
+        100: "#d1fae5",
+        200: "#a7f3d0",
+        300: "#6ee7b7",
+        400: "#34d399",
+        500: "#10b981",
+        600: "#059669",
+        700: "#047857",
+        800: "#065f46",
+        900: "#134e4a",
+      },
     },
   },
   presets: [
@@ -66,5 +77,16 @@ export default defineConfig({
         serif: "Zodiak",
       },
     }),
+  ],
+  shortcuts: {
+    'group-primary': 'group', // Define el alias para group-1
+    'group-primary-hover': 'group-hover',
+    'group-secondary': 'group', // Define el alias para group-2
+    'group-secondary-hover': 'group-hover',
+  },
+  rules: [
+    // Reglas personalizadas para group-hover
+    [/^group-primary-hover:(.*)$/, ([, s]) => ({ [`.group-1:hover &`]: s })],
+    [/^group-secondary-hover:(.*)$/, ([, s]) => ({ [`.group-2:hover &`]: s })],
   ],
 });
