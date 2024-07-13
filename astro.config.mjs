@@ -1,12 +1,12 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import netlify from "@astrojs/netlify";
+import vercel from '@astrojs/vercel/serverless';
 import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
 
 import solidJs from "@astrojs/solid-js";
-import { remarkReadingTime } from "./src/lib/ remark-reading-time.mjs";
+//import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs"; // Asegúrate de que la ruta no tenga espacios en blanco.
 
 import svelte from "@astrojs/svelte";
 
@@ -26,11 +26,13 @@ export default defineConfig({
     icon(),
     svelte(),
   ],
+  /*
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
+  */
   output: "server",
-  adapter: netlify({ edgeMiddleware: true }),
+  adapter: vercel(), // Cambia netlify() por vercel()
   vite: {
     assetsInclude: "**/*.riv",
   },
