@@ -1,0 +1,154 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card/index.astro";
+import ReactIcon from "../../icons/ReactIcon.astro";
+import AstroIcon from "../../icons/AstroIcon.astro";
+import AngularIcon from "../../icons/AngularIcon.astro";
+import JavaIcon from "../../icons/JavaIcon.astro";
+import PostGressIcon from "../../icons/PostGressIcon.astro";
+import DockerIcon from "../../icons/DockerIcon.astro";
+import NextJsIcon from "../../icons/NextJsIcon.astro";
+import NodeIcon from "../../icons/NodeIcon.astro";
+import FlutterIcon from "../../icons/FlutterIcon.astro";
+import SpringIcon from "../../icons/SpringIcon.astro";
+import TailwindIcon from "../../icons/TailwindIcon.astro";
+import { Icon } from "astro-icon/components";
+import Button from "../../components/Button.astro";
+import { LINKS } from "../../lib/constants";
+
+const pages = [
+  {
+    slug: undefined,
+    title: "Tienda de Astro",
+    text: "¡Te damos la bienvenida a la tienda de Astro!",
+    iconList: [ReactIcon],
+    image: "/SpotifyClon.png",
+  },
+  {
+    slug: "SpotifyClon",
+    title: "Clon de Spotify usando Astro y ReactJs",
+    text: `Proyecto de Astro y React basado en el clon de spotify de Midudev. 
+    Actualmente en proceso de agregar nuevas funcionalidades como conexión a una API, diseño responsive y sesión 
+    de usuarios. <br><br>
+    Este proyecto contiene un reproductor de musica como estado global usando zustand, el cual
+    se mantine activo y editable a lo largo de toda la aplicación. <br><br>
+    Estilos generados con TailwindCSS.`,
+    iconList: [ReactIcon, TailwindIcon, AstroIcon],
+    image: "/SpotifyClon.png",
+    github: "https://github.com/illoquehambre/AstroSpotifyClon",
+    website: "https://astro-spotify-clon.vercel.app",
+  },
+  {
+    slug: "HazTuHuerto",
+    title: "Proyecto final de DAM",
+    text: `Proyecto dinald el grado superior de Desarrollod e Aplciaciones Multiplataforma.<br>
+    Aplicación Fullstack usando Spring como backend, PostgressSQL como base de datos, React como entorno web y Flutter para la app movil.<br><br>
+    La idea de este proyecto es una apliación que ayude a gestionar tu propio huerto, de forma que puedas clasificarlo en parcelas, cultivos y 
+    tomar notas de los mismos. al mismo tiempo tendría una sencilla red social la cual permitiría interactuar entre usuarios para
+    resolver dudas en cuanto sus propios huertos (a modod de StackOverflow).<br><br>
+    En cuanto al backend, se hace uso de SpringSecurity, dockerización de la base de datos, paginación, gestión de errores centralizada, gestion de sesión de usuarios con JWT, CRUD completo,
+    subida de archivos múltiples y mucho más.<br><br>
+    Actualmente en proceso de refactorizar el frontend para su publicación.`
+    ,
+    iconList: [
+      ReactIcon,
+      SpringIcon,
+      JavaIcon,
+      DockerIcon,
+      PostGressIcon,
+      FlutterIcon,
+    ],
+    image: "/HazTuHuerto.png",
+    github: "https://github.com/illoquehambre/HazTuHuerto",
+    website: null,
+  },
+  {
+    slug: "DropShipping",
+    title: "Tienda de ropa automatizada con dropshipping conectado a printful",
+    text: `Este proyecto, todavia en desarrollo, es una tienda online desarrollada con NextJs 
+    y conectada a Printful, un fabricante de productos especializado en ropa. <br> <br> 
+    La complejidad de este proyeco recae en que, a diferencia de una tienda convencional, 
+    no existirá una gestión de stock sino que cada producto comprado por el cliente final será fabricado y
+    enviado directamente por el proveedor (printful). <br> <br> 
+    De igual manera los productos mostrados en la tienda serán importados desde Printful a partir de diseños 
+    generados por el propietario del comercio electronico. <br> <br> 
+    Para la pasarela de pagos, dashboard y carrito se usa una integración con Snip-Cart.<br> 
+    Los estilos y diseño responsive estan basados en TailwindCSS.`,
+
+    iconList: [ReactIcon, NextJsIcon, NodeIcon, TailwindIcon],
+    image: "/Dropshipping.png",
+    github: "https://github.com/illoquehambre/Comercio-Beta",
+    website: null,
+  },
+];
+
+const { slug } = Astro.params;
+const page = pages.find((page) => page.slug === slug);
+if (!page) return Astro.redirect("/404");
+const { title, text, iconList, image, github, website } = page;
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout title={slug?slug:'UndefinedProject'} description="">
+  <a
+    href="/"
+    class="text-white absolute bg-neutral-900 hover:bg-neutral-800 top-4 left-4 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg"
+    >Back</a
+  >
+  <main
+    class="text-white m-auto p-2 grid gap-4 max-w-7xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
+  >
+  
+    <div class="md:col-span-2 md:row-span-4 flex flex-col gap-4">
+      <h1 class="ml-2 text-4xl font-bold">{title}</h1>
+      <Card colSpan="md:col-span-2" rowSpan="md:row-span-4 flex gap-4">
+        <div set:html={text} />
+      </Card>
+    </div>
+    <div class="md:col-span-2 md:row-span-4 flex flex-col gap-4">
+      <div class="mt-2 rounded-xl">
+        <img class="rounded-xl" src={image} alt=`${title}` />
+      </div>
+      <div class="flex gap-6 w-full items-center justify-between h-30">
+        <div class="flex gap-6 w-full items-center ml-3">
+          <a href={github} aria-label="github profile" target="_blank">
+            <Button aria-label="github profile">
+              <Icon name="ri:github-fill" class="h-6" />
+              <span class="sr-only">GitHub Project</span>
+            </Button>
+          </a>
+          {
+            website && (
+              <a href={website} aria-label="github profile" target="_blank">
+                <Button aria-label="github profile">
+                  <Icon name="ri:link" class="h-6" />
+                  <span class="sr-only">Website</span>
+                </Button>
+              </a>
+            )
+          }
+        </div>
+        <div class="flex gap-6 w-full items-center justify-right mr-2">
+          {iconList.map((Icon) => <Icon />)}
+        </div>
+      </div>
+      <div>
+        <a
+          class="flex gap-6 w-full items-align h-30"
+          href={LINKS.github}
+          aria-label="github profile"
+          target="_blank"
+        >
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

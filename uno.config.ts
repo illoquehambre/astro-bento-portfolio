@@ -45,6 +45,7 @@ export default defineConfig({
         900: "#0B0B0B" /* Deeper and darker */,
       },
       primary: {
+        50:"#FFFFFF",
         100: "#F9CDD3",
         200: "#F3A3AA",
         300: "#EC7981",
@@ -88,5 +89,6 @@ export default defineConfig({
     // Reglas personalizadas para group-hover
     [/^group-primary-hover:(.*)$/, ([, s]) => ({ [`.group-1:hover &`]: s })],
     [/^group-secondary-hover:(.*)$/, ([, s]) => ({ [`.group-2:hover &`]: s })],
+    
   ],
 });

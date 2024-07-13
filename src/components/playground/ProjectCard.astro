@@ -1,19 +1,24 @@
 ---
 import  Card from '../Card/index.astro'
-
 interface Props {
   slug?: string;
   title?: string;
-  description?: string;
+  icons?: [];
+
   
 }
 
-const { title, slug, description } = Astro.props;
+const { title, slug, icons } = Astro.props;
 ---
 
 <Card href={slug} height="h-auto" color='secondary'>
-    <div class="text-white flex gap-4 items-center">
-      <h2 class="font-bold text-xl">{title}</h2>
-      <p class="font-light text-sm">{description}</p>
+    <div class="text-white flex flex-col sm:flex-row gap-4 items-center">
+      <h2 class="font-bold  text-xl ">{title}</h2>
+      <div class="w-full justify-center sm:justify-end flex gap-3 mx-3 sm:mr-6 sm:ml-1 flex-wrap">
+        {
+          icons?.map((Icon) => <Icon />)
+        }
+      </div>
+      
     </div>
   </Card>

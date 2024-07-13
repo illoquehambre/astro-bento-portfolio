@@ -1,7 +1,17 @@
 ---
 import Card from "../Card/index.astro";
 import ProjectCard from './ProjectCard.astro'
-
+import ReactIcon from "../../icons/ReactIcon.astro";
+import AstroIcon from  '../../icons/AstroIcon.astro'
+import AngularIcon from  '../../icons/AngularIcon.astro'
+import JavaIcon from  '../../icons/JavaIcon.astro'
+import PostGressIcon from  '../../icons/PostGressIcon.astro'
+import DockerIcon from  '../../icons/DockerIcon.astro'
+import NextJsIcon from  '../../icons/NextJsIcon.astro'
+import NodeIcon from  '../../icons/NodeIcon.astro'
+import FlutterIcon from  '../../icons/FlutterIcon.astro'
+import SpringIcon from  '../../icons/SpringIcon.astro'
+import TailwindIcon from  '../../icons/TailwindIcon.astro'
 ---
 
 <Card
@@ -9,10 +19,15 @@ import ProjectCard from './ProjectCard.astro'
     rowSpan="md:row-span-4 flex gap-4"
     
 >
-    <ProjectCard title="SpotifyClon" slug="/enlaceAlProyecto" description="Listado  de iconos de tecnologías"/>
-    <ProjectCard title="SpotifyClon" slug="/enlaceAlProyecto" description="Se enlaza a una página de detalles del proyecto"/>
+<div class="scroll flex flex-col justify-between h-100 gap-8 overflow-auto ">
+   
+    <ProjectCard title="SpotifyClon" slug="/projects/SpotifyClon" icons={[ReactIcon, TailwindIcon, AstroIcon, ]}/>
+    <ProjectCard title="Dropshipping E-commerce" slug="/projects/DropShipping" icons={[ReactIcon, SpringIcon, JavaIcon, DockerIcon, PostGressIcon, FlutterIcon ]}/>
 
-    <ProjectCard title="SpotifyClon" slug="/enlaceAlProyecto" description=""/>
+    <ProjectCard title="HazTuHuerto" slug="/projects/HazTuHuerto" icons={[ReactIcon, NextJsIcon, NodeIcon, TailwindIcon]}/>
+
+</div>
+    
 
 </Card>
 

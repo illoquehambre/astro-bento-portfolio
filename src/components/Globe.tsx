@@ -6,23 +6,20 @@ const GlobeComponent = () => {
   let mapContainer: HTMLDivElement | undefined;
 
   const visitedCountries = [
-    "France",
-    "China",
+    "Spain",
+    "Germany",
+    "Ireland",
     "Italy",
-    "Sri Lanka",
-    "Turkey",
-    "Greece",
-    "Malta",
-    "Hungary",
+    "Netherlands",
     "Portugal",
-    "Marocco",
+    
   ];
 
   onMount(() => {
     if (!mapContainer) return;
 
     const width = mapContainer.clientWidth;
-    const height = 500;
+    const height = 600;
     const sensitivity = 75;
 
     let projection = d3
@@ -76,7 +73,7 @@ const GlobeComponent = () => {
   });
 
   return (
-    <div class="flex flex-col text-white justify-center items-center w-full h-full">
+    <div class="flex flex-col text-white justify-center items-center w-full h-full overflow-hidden rounded-lg">
       <div class="w-full" ref={mapContainer}></div>
     </div>
   );

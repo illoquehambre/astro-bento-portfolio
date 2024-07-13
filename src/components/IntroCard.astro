@@ -11,12 +11,18 @@ import { Image } from "astro:assets";
   <div class="flex w-full h-full">
     <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
       <div class="flex flex-col h-full">
-        <h6 class="text-sm font-light m-0 text-gray-500">welcome</h6>
-        <p class="m-0 font-light text-xl">
-          Hi, I'm <b class="font-bold">Gianmarco Cavallo</b>, a software
-          developer with strong focus on the user experience, animations and
-          micro interactions
-        </p>
+        <h6 class="text-sm font-light m-0 text-gray-500">Bienvenido</h6>
+        <h1 class="m-0 font-light text-xl mt-2">
+          ¡Hola! Soy <b class="font-bold">Ignacio Moreno Gómez</b>, un desarrollador
+          web con un gran enfoque en la experiencia de usuario y la automatización de procesos.
+        </h1>
+          <br> 
+          <h2 class="m-0 font-light text-xl">
+            Actualmente trabajo como freelance en el desarrollo de pequeñas y
+            medianas aplicaciones web por encargo.
+          </h2>
+         
+        </h1>
       </div>
       <div class="flex gap-4">
         <a href={LINKS.github} aria-label="github profile" target="_blank">
@@ -31,10 +37,11 @@ import { Image } from "astro:assets";
             <span class="sr-only">Linkedin Profile</span>
           </Button>
         </a>
-        <a href={LINKS.dribble} aria-label="dribble profile" target="_blank">
+        <a href='IgnacioMorenoGomezCVWebDeveloperEn.pdf' download="IgnacioMorenoGomezCVWebDeveloperEn.pdf" aria-label="dribble profile" target="_blank">
           <Button aria-label="dribble profile">
-            <Icon name="ri:dribbble-fill" class="h-6" />
-            <span class="sr-only">Dribble Profile</span>
+            
+            <Icon name="ri:download-fill" class="h-6" />
+            <span class="sr-only">Download Cv</span>
           </Button>
         </a>
         <Tooltip client:visible>
@@ -48,7 +55,7 @@ import { Image } from "astro:assets";
     <Image
       width="300"
       height="300"
-      src="/me.webp"
+      src="/laptopCat.png"
       class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
       alt="memoji of gianmarco"
     />

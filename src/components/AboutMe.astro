@@ -5,10 +5,12 @@ import ExperienceCard from "./ExperienceCard.astro";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="Experiencia">
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 w-full h-120 overflow-auto scroll" >
     <Now />
-    <ExperienceCard title="FullStack Developer" company="Memo"  
+    <ExperienceCard title="Desarrollador FullStack" company="Memo"  
     description="Programador en una startup irlandesa ubicada en Galway. Desarrollo de un programa de fidelización de clientes."/>
+    <ExperienceCard title="Atención al cliente" company="Varias"  
+    description="Atención al cliente en diversas empresas de varios sectores tanto en españa como en Irlanda."/>
     {/* <p class="text-sm font-light">
       Aquí irá la experencia.
       Una card por experiencia
