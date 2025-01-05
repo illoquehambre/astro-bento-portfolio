@@ -3,11 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card/index.astro";
 import IntroCard from "../components/IntroCard.astro";
 import ContactsCard from "../components/ContactsCard.astro";
-import TimeZone from "../components/TimeZoneCard.astro";
 import AboutMe from "../components/AboutMe.astro";
-import Now from "../components/Now.astro";
 import Globe from "../components/Globe";
-import PlayGround from '../components/playground/index.astro' 
+import PlayGround from "../components/playground/index.astro";
 ---
 
 <script>
@@ -42,7 +40,9 @@ import PlayGround from '../components/playground/index.astro'
     <IntroCard />
     <AboutMe />
     <ContactsCard />
-
+    <PlayGround />
+    {/** <TimeZone />*/}
+    {/** <Now />*/}
     {
       /*
     <Card
@@ -53,33 +53,36 @@ import PlayGround from '../components/playground/index.astro'
     />
      */
     }
-    <PlayGround/>
-    {/** <TimeZone />*/}
-    {/** <Now />*/}
     <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-1"
-      title="Paises que he visitado"
       href="travel"
       colorText="text-neutral-900"
     >
+      <p class="text-lg lg:text-xl xl:text-2xl font-bold text-center">
+        Paises visitados
+      </p>
       <div class="h-full w-full absolute inset-0 -z-10">
         <Globe client:load />
       </div>
     </Card>
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs">
-        © 2024 · Hecho con ♥️ usando <a
-          href="https://astro.build/"
-          target="_blank"
-          class="text-red-500">Astro</a
-        > por Ignacio MG.
-        
-        Inspirado en <a
-        href="https://github.com/Ladvace/astro-bento-portfolio"
-        target="_blank"
-        class="text-red-500">Gianmarco.</a>
-      </p>
+      <div class="text-xs flex flex-col overflow-y-auto scroll flex-grow">
+        <p>
+          Hecho con ♥️ usando <a
+            href="https://astro.build/"
+            target="_blank"
+            class="text-red-500">Astro</a
+          > por Ignacio Moreno Gómez.
+        </p>
+        <p>
+          Inspirado en <a
+            href="https://github.com/Ladvace/astro-bento-portfolio"
+            target="_blank"
+            class="text-red-500">Ladvace.</a
+          >
+        </p>
+      </div>
     </Card>
   </main>
 </Layout>

@@ -1,16 +1,16 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import vercel from '@astrojs/vercel/serverless';
+import vercel from "@astrojs/vercel/serverless";
 import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
-
 import solidJs from "@astrojs/solid-js";
-//import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs"; // Asegúrate de que la ruta no tenga espacios en blanco.
-
 import svelte from "@astrojs/svelte";
+import events from 'events';
 
-// https://astro.build/config
+// Incrementa el límite global de oyentes
+events.setMaxListeners(50); // Cambia el número según sea necesario
+
 export default defineConfig({
   site: "https://ignaciomg.xyz/",
   integrations: [
@@ -22,18 +22,37 @@ export default defineConfig({
       ],
     }),
     solidJs(),
-    UnoCSS({ injectReset: true }),
+    UnoCSS({
+      injectReset: true,
+      extract: false,
+      content: {
+        pipeline: {
+          include: [
+            '**/*.astro',
+            '**/*.tsx',
+            '**/*.jsx',
+            '**/*.svelte',
+          ],
+          exclude: [
+            'node_modules/**',
+            '.git/**',
+            '**/*.md',
+          ],
+        },
+      },
+    }),
     icon(),
     svelte(),
   ],
-  /*
-  markdown: {
-    remarkPlugins: [remarkReadingTime],
-  },
-  */
   output: "server",
-  adapter: vercel(), // Cambia netlify() por vercel()
+  adapter: vercel(),
   vite: {
-    assetsInclude: "**/*.riv",
+    server: {
+      watch: {
+        usePolling: true, // Cambia a vigilancia basada en sondeo.
+        interval: 300,    // Aumenta el intervalo entre verificaciones para evitar una carga alta.
+      },
+    },
+   
   },
 });
