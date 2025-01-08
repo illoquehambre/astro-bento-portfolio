@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://ignaciomg.xyz/sitemap-index.xml
+Sitemap: https://ignaciomg.xyz/sitemap-0.xml
