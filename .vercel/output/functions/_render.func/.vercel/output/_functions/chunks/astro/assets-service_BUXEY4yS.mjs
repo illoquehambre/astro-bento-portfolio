@@ -295,7 +295,7 @@ function normalizeLF(code) {
 }
 
 function codeFrame(src, loc) {
-  if (!loc || loc.line === void 0 || loc.column === void 0) {
+  if (!loc || loc.line === undefined || loc.column === undefined) {
     return "";
   }
   const lines = normalizeLF(src).split("\n").map((ln) => ln.replace(/\t/g, "  "));
@@ -453,7 +453,7 @@ const baseService = {
         message: ExpectedImage.message(
           JSON.stringify(options.src),
           typeof options.src,
-          JSON.stringify(options, (_, v) => v === void 0 ? null : v)
+          JSON.stringify(options, (_, v) => v === undefined ? null : v)
         )
       });
     }
@@ -601,12 +601,12 @@ const baseService = {
   parseURL(url) {
     const params = url.searchParams;
     if (!params.has("href")) {
-      return void 0;
+      return undefined;
     }
     const transform = {
       src: params.get("href"),
-      width: params.has("w") ? parseInt(params.get("w")) : void 0,
-      height: params.has("h") ? parseInt(params.get("h")) : void 0,
+      width: params.has("w") ? parseInt(params.get("w")) : undefined,
+      height: params.has("h") ? parseInt(params.get("h")) : undefined,
       format: params.get("f"),
       quality: params.get("q")
     };
@@ -672,13 +672,13 @@ const sharpService = {
       result.resize({ width: Math.round(transform.width) });
     }
     if (transform.format) {
-      let quality = void 0;
+      let quality = undefined;
       if (transform.quality) {
         const parsedQuality = parseQuality(transform.quality);
         if (typeof parsedQuality === "number") {
           quality = parsedQuality;
         } else {
-          quality = transform.quality in qualityTable ? qualityTable[transform.quality] : void 0;
+          quality = transform.quality in qualityTable ? qualityTable[transform.quality] : undefined;
         }
       }
       result.toFormat(transform.format, { quality });

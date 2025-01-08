@@ -10,25 +10,25 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.6",
-    "@astrojs/sitemap": "^3.1.5",
-    "@astrojs/solid-js": "^4.3.0",
-    "@astrojs/svelte": "^5.5.0",
-    "@astrojs/vercel": "^7.7.2",
-    "@iconify-json/ri": "^1.1.20",
-    "@rive-app/canvas": "^2.16.0",
-    "@studio-freight/lenis": "^1.0.42",
-    "astro": "^4.10.1",
-    "astro-icon": "^1.1.0",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/solid-js": "^4.4.4",
+    "@astrojs/svelte": "^5.7.3",
+    "@astrojs/vercel": "^7.8.2",
+    "@iconify-json/ri": "^1.2.5",
+    "@rive-app/canvas": "^2.25.3",
+    "astro": "^4.16.18",
+    "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "d3": "^7.9.0",
     "gsap": "^3.12.5",
+    "lenis": "^1.1.18",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^10.18.0",
     "reading-time": "^1.5.0",
-    "solid-js": "^1.8.17",
-    "svelte": "^4.2.17"
+    "solid-js": "^1.9.4",
+    "svelte": "^4.2.19"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.5",
@@ -40,7 +40,7 @@
     "autoprefixer": "^10.4.19",
     "markdown-it": "^14.1.0",
     "motion": "^10.18.0",
-    "sanitize-html": "^2.13.0",
+    "sanitize-html": "^2.14.0",
     "unocss": "^0.60.4"
   }
 }

@@ -1,9 +1,4 @@
-import { bold } from 'kleur/colors';
-import { A as AstroError, E as EndpointDidNotReturnAResponse, I as InvalidComponentArgs, a as AstroGlobUsedOutside, b as AstroGlobNoMatch, M as MissingMediaQueryDirective, N as NoMatchingImport, O as OnlyResponseCanBeReturned, R as ResponseSentError, c as NoMatchingRenderer, d as NoClientOnlyHint, e as NoClientEntrypoint } from './assets-service_BHAe3Dce.mjs';
-import { clsx } from 'clsx';
-import { escape } from 'html-escaper';
-import { decodeBase64, encodeHexUpperCase, encodeBase64, decodeHex } from '@oslojs/encoding';
-import 'cssesc';
+import { A as AstroError, E as EndpointDidNotReturnAResponse, I as InvalidComponentArgs, a as AstroGlobUsedOutside, b as AstroGlobNoMatch, M as MissingMediaQueryDirective, N as NoMatchingImport, O as OnlyResponseCanBeReturned, R as ResponseSentError, c as NoMatchingRenderer, d as NoClientOnlyHint, e as NoClientEntrypoint } from './assets-service_BUXEY4yS.mjs';
 
 const ASTRO_VERSION = "4.16.18";
 const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
@@ -18,6 +13,35 @@ const clientLocalsSymbol = Symbol.for("astro.locals");
 const originPathnameSymbol = Symbol.for("astro.originPathname");
 const responseSentSymbol = Symbol.for("astro.responseSent");
 
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+let FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM, isTTY=true;
+if (typeof process !== 'undefined') {
+	({ FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env || {});
+	isTTY = process.stdout && process.stdout.isTTY;
+}
+
+const $ = {
+	enabled: !NODE_DISABLE_COLORS && NO_COLOR == null && TERM !== 'dumb' && (
+		FORCE_COLOR != null && FORCE_COLOR !== '0' || isTTY
+	)
+};
+
+function init(x, y) {
+	let rgx = new RegExp(`\\x1b\\[${y}m`, 'g');
+	let open = `\x1b[${x}m`, close = `\x1b[${y}m`;
+
+	return function (txt) {
+		if (!$.enabled || txt == null) return txt;
+		return open + (!!~(''+txt).indexOf(close) ? txt.replace(rgx, close + open) : txt) + close;
+	};
+}
+const bold = init(1, 22);
+const dim = init(2, 22);
+const red = init(31, 39);
+const yellow = init(33, 39);
+const blue = init(34, 39);
+
 async function renderEndpoint(mod, context, ssr, logger) {
   const { request, url } = context;
   const method = request.method.toUpperCase();
@@ -30,7 +54,7 @@ async function renderEndpoint(mod, context, ssr, logger) {
       )} requests are not available for a static site. Update your config to \`output: 'server'\` or \`output: 'hybrid'\` to enable.`
     );
   }
-  if (handler === void 0) {
+  if (handler === undefined) {
     logger.warn(
       "router",
       `No API Route handler exists for the method "${method}" for the route "${url.pathname}".
@@ -128,6 +152,49 @@ function createAstro(site) {
     glob: createAstroGlobFn()
   };
 }
+
+/**
+ * Copyright (C) 2017-present by Andrea Giammarchi - @WebReflection
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+const {replace} = '';
+const ca = /[&<>'"]/g;
+
+const esca = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  "'": '&#39;',
+  '"': '&quot;'
+};
+const pe = m => esca[m];
+
+/**
+ * Safely escape HTML entities such as `&`, `<`, `>`, `"`, and `'`.
+ * @param {string} es the input to safely escape
+ * @returns {string} the escaped input, and it **throws** an error if
+ *  the input type is unexpected, except for boolean and numbers,
+ *  converted as string.
+ */
+const escape = es => replace.call(es, ca, pe);
 
 function isPromise(value) {
   return !!value && typeof value === "object" && "then" in value && typeof value.then === "function";
@@ -229,6 +296,8 @@ function isRenderInstruction(chunk) {
   return chunk && typeof chunk === "object" && chunk[RenderInstructionSymbol];
 }
 
+function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e)){var o=e.length;for(t=0;t<o;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);}else for(f in e)e[f]&&(n&&(n+=" "),n+=f);return n}function clsx(){for(var e,t,f=0,n="",o=arguments.length;f<o;f++)(e=arguments[f])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}
+
 const PROP_TYPE = {
   Value: 0,
   JSON: 1,
@@ -315,7 +384,7 @@ function convertToSerializedForm(value, metadata = {}, parents = /* @__PURE__ */
       if (value === -Infinity) {
         return [PROP_TYPE.Infinity, -1];
       }
-      if (value === void 0) {
+      if (value === undefined) {
         return [PROP_TYPE.Value];
       }
       return [PROP_TYPE.Value, value];
@@ -749,7 +818,7 @@ class RenderTemplateResult {
   error;
   constructor(htmlParts, expressions) {
     this.htmlParts = htmlParts;
-    this.error = void 0;
+    this.error = undefined;
     this.expressions = expressions.map((expression) => {
       if (isPromise(expression)) {
         return Promise.resolve(expression).catch((err) => {
@@ -1003,7 +1072,7 @@ class AstroComponentInstance {
     }
   }
   async init(result) {
-    if (this.returnValue !== void 0) return this.returnValue;
+    if (this.returnValue !== undefined) return this.returnValue;
     this.returnValue = this.factory(result, this.props, this.slotValues);
     if (isPromise(this.returnValue)) {
       this.returnValue.then((resolved) => {
@@ -1189,7 +1258,7 @@ async function renderToAsyncIterable(result, componentFactory, props, children, 
   let renderingComplete = false;
   const iterator = {
     async next() {
-      if (result.cancelled) return { done: true, value: void 0 };
+      if (result.cancelled) return { done: true, value: undefined };
       if (next !== null) {
         await next.promise;
       } else if (!renderingComplete && !buffer.length) {
@@ -1224,7 +1293,7 @@ async function renderToAsyncIterable(result, componentFactory, props, children, 
     },
     async return() {
       result.cancelled = true;
-      return { done: true, value: void 0 };
+      return { done: true, value: undefined };
     }
   };
   const destination = {
@@ -1283,6 +1352,223 @@ function getHTMLElementName(constructor) {
   const assignedName = constructor.name.replace(/^HTML|Element$/g, "").replace(/[A-Z]/g, "-$&").toLowerCase().replace(/^-/, "html-");
   return assignedName;
 }
+
+function encodeHexUpperCase(data) {
+    let result = "";
+    for (let i = 0; i < data.length; i++) {
+        result += alphabetUpperCase[data[i] >> 4];
+        result += alphabetUpperCase[data[i] & 0x0f];
+    }
+    return result;
+}
+function decodeHex(data) {
+    if (data.length % 2 !== 0) {
+        throw new Error("Invalid hex string");
+    }
+    const result = new Uint8Array(data.length / 2);
+    for (let i = 0; i < data.length; i += 2) {
+        if (!(data[i] in decodeMap)) {
+            throw new Error("Invalid character");
+        }
+        if (!(data[i + 1] in decodeMap)) {
+            throw new Error("Invalid character");
+        }
+        result[i / 2] |= decodeMap[data[i]] << 4;
+        result[i / 2] |= decodeMap[data[i + 1]];
+    }
+    return result;
+}
+const alphabetUpperCase = "0123456789ABCDEF";
+const decodeMap = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    a: 10,
+    A: 10,
+    b: 11,
+    B: 11,
+    c: 12,
+    C: 12,
+    d: 13,
+    D: 13,
+    e: 14,
+    E: 14,
+    f: 15,
+    F: 15
+};
+
+var EncodingPadding$1;
+(function (EncodingPadding) {
+    EncodingPadding[EncodingPadding["Include"] = 0] = "Include";
+    EncodingPadding[EncodingPadding["None"] = 1] = "None";
+})(EncodingPadding$1 || (EncodingPadding$1 = {}));
+var DecodingPadding$1;
+(function (DecodingPadding) {
+    DecodingPadding[DecodingPadding["Required"] = 0] = "Required";
+    DecodingPadding[DecodingPadding["Ignore"] = 1] = "Ignore";
+})(DecodingPadding$1 || (DecodingPadding$1 = {}));
+
+function encodeBase64(bytes) {
+    return encodeBase64_internal(bytes, base64Alphabet, EncodingPadding.Include);
+}
+function encodeBase64_internal(bytes, alphabet, padding) {
+    let result = "";
+    for (let i = 0; i < bytes.byteLength; i += 3) {
+        let buffer = 0;
+        let bufferBitSize = 0;
+        for (let j = 0; j < 3 && i + j < bytes.byteLength; j++) {
+            buffer = (buffer << 8) | bytes[i + j];
+            bufferBitSize += 8;
+        }
+        for (let j = 0; j < 4; j++) {
+            if (bufferBitSize >= 6) {
+                result += alphabet[(buffer >> (bufferBitSize - 6)) & 0x3f];
+                bufferBitSize -= 6;
+            }
+            else if (bufferBitSize > 0) {
+                result += alphabet[(buffer << (6 - bufferBitSize)) & 0x3f];
+                bufferBitSize = 0;
+            }
+            else if (padding === EncodingPadding.Include) {
+                result += "=";
+            }
+        }
+    }
+    return result;
+}
+const base64Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+function decodeBase64(encoded) {
+    return decodeBase64_internal(encoded, base64DecodeMap, DecodingPadding.Required);
+}
+function decodeBase64_internal(encoded, decodeMap, padding) {
+    const result = new Uint8Array(Math.ceil(encoded.length / 4) * 3);
+    let totalBytes = 0;
+    for (let i = 0; i < encoded.length; i += 4) {
+        let chunk = 0;
+        let bitsRead = 0;
+        for (let j = 0; j < 4; j++) {
+            if (padding === DecodingPadding.Required && encoded[i + j] === "=") {
+                continue;
+            }
+            if (padding === DecodingPadding.Ignore &&
+                (i + j >= encoded.length || encoded[i + j] === "=")) {
+                continue;
+            }
+            if (j > 0 && encoded[i + j - 1] === "=") {
+                throw new Error("Invalid padding");
+            }
+            if (!(encoded[i + j] in decodeMap)) {
+                throw new Error("Invalid character");
+            }
+            chunk |= decodeMap[encoded[i + j]] << ((3 - j) * 6);
+            bitsRead += 6;
+        }
+        if (bitsRead < 24) {
+            let unused;
+            if (bitsRead === 12) {
+                unused = chunk & 0xffff;
+            }
+            else if (bitsRead === 18) {
+                unused = chunk & 0xff;
+            }
+            else {
+                throw new Error("Invalid padding");
+            }
+            if (unused !== 0) {
+                throw new Error("Invalid padding");
+            }
+        }
+        const byteLength = Math.floor(bitsRead / 8);
+        for (let i = 0; i < byteLength; i++) {
+            result[totalBytes] = (chunk >> (16 - i * 8)) & 0xff;
+            totalBytes++;
+        }
+    }
+    return result.slice(0, totalBytes);
+}
+var EncodingPadding;
+(function (EncodingPadding) {
+    EncodingPadding[EncodingPadding["Include"] = 0] = "Include";
+    EncodingPadding[EncodingPadding["None"] = 1] = "None";
+})(EncodingPadding || (EncodingPadding = {}));
+var DecodingPadding;
+(function (DecodingPadding) {
+    DecodingPadding[DecodingPadding["Required"] = 0] = "Required";
+    DecodingPadding[DecodingPadding["Ignore"] = 1] = "Ignore";
+})(DecodingPadding || (DecodingPadding = {}));
+const base64DecodeMap = {
+    "0": 52,
+    "1": 53,
+    "2": 54,
+    "3": 55,
+    "4": 56,
+    "5": 57,
+    "6": 58,
+    "7": 59,
+    "8": 60,
+    "9": 61,
+    A: 0,
+    B: 1,
+    C: 2,
+    D: 3,
+    E: 4,
+    F: 5,
+    G: 6,
+    H: 7,
+    I: 8,
+    J: 9,
+    K: 10,
+    L: 11,
+    M: 12,
+    N: 13,
+    O: 14,
+    P: 15,
+    Q: 16,
+    R: 17,
+    S: 18,
+    T: 19,
+    U: 20,
+    V: 21,
+    W: 22,
+    X: 23,
+    Y: 24,
+    Z: 25,
+    a: 26,
+    b: 27,
+    c: 28,
+    d: 29,
+    e: 30,
+    f: 31,
+    g: 32,
+    h: 33,
+    i: 34,
+    j: 35,
+    k: 36,
+    l: 37,
+    m: 38,
+    n: 39,
+    o: 40,
+    p: 41,
+    q: 42,
+    r: 43,
+    s: 44,
+    t: 45,
+    u: 46,
+    v: 47,
+    w: 48,
+    x: 49,
+    y: 50,
+    z: 51,
+    "+": 62,
+    "/": 63
+};
 
 const ALGORITHM = "AES-GCM";
 async function decodeKey(encoded) {
@@ -1410,7 +1696,7 @@ function guessRenderers(componentUrl) {
     case "jsx":
     case "tsx":
       return ["@astrojs/react", "@astrojs/preact", "@astrojs/solid-js", "@astrojs/vue (jsx)"];
-    case void 0:
+    case undefined:
     default:
       return [
         "@astrojs/react",
@@ -1451,7 +1737,7 @@ Did you forget to import the component or is it possible there is a typo?`
     clientDirectives
   );
   let html = "";
-  let attrs = void 0;
+  let attrs = undefined;
   if (hydration) {
     metadata.hydrate = hydration.directive;
     metadata.hydrateArgs = hydration.value;
@@ -1773,7 +2059,7 @@ async function renderComponent(result, displayName, Component, props, slots = {}
   }
 }
 function normalizeProps(props) {
-  if (props["class:list"] !== void 0) {
+  if (props["class:list"] !== undefined) {
     const value = props["class:list"];
     delete props["class:list"];
     props["class"] = clsx(props["class"], value);
@@ -2049,4 +2335,4 @@ function spreadAttributes(values = {}, _name, { class: scopedClassName } = {}) {
   return markHTMLString(output);
 }
 
-export { ASTRO_VERSION as A, REROUTABLE_STATUS_CODES as B, DEFAULT_404_COMPONENT as D, Fragment as F, NOOP_MIDDLEWARE_HEADER as N, ROUTE_TYPE_HEADER as R, createComponent as a, renderComponent as b, createAstro as c, renderSlot as d, renderHead as e, addAttribute as f, decodeKey as g, REROUTE_DIRECTIVE_HEADER as h, decryptString as i, createSlotValueFromString as j, renderSlotToString as k, renderJSX as l, maybeRenderHead as m, chunkToString as n, isRenderInstruction as o, originPathnameSymbol as p, clientLocalsSymbol as q, renderTemplate as r, spreadAttributes as s, clientAddressSymbol as t, unescapeHTML as u, responseSentSymbol as v, renderPage as w, REWRITE_DIRECTIVE_HEADER_KEY as x, REWRITE_DIRECTIVE_HEADER_VALUE as y, renderEndpoint as z };
+export { clientAddressSymbol as A, ASTRO_VERSION as B, responseSentSymbol as C, DEFAULT_404_COMPONENT as D, renderPage as E, Fragment as F, REWRITE_DIRECTIVE_HEADER_KEY as G, REWRITE_DIRECTIVE_HEADER_VALUE as H, renderEndpoint as I, REROUTABLE_STATUS_CODES as J, commonjsGlobal as K, NOOP_MIDDLEWARE_HEADER as N, ROUTE_TYPE_HEADER as R, createComponent as a, renderComponent as b, createAstro as c, renderSlot as d, renderHead as e, addAttribute as f, decodeKey as g, escape as h, REROUTE_DIRECTIVE_HEADER as i, bold as j, red as k, dim as l, maybeRenderHead as m, blue as n, decryptString as o, createSlotValueFromString as p, renderSlotToString as q, renderTemplate as r, spreadAttributes as s, renderJSX as t, unescapeHTML as u, chunkToString as v, isRenderInstruction as w, originPathnameSymbol as x, yellow as y, clientLocalsSymbol as z };

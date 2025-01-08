@@ -1,8 +1,7 @@
 /* empty css                                    */
-import { c as createAstro, a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, f as addAttribute } from '../../chunks/astro/server_Bmc84dX9.mjs';
-import 'kleur/colors';
-import { $ as $$Layout } from '../../chunks/Layout_CwTY0461.mjs';
-import { $ as $$ReactIcon, a as $$TailwindIcon, b as $$AstroIcon, c as $$SpringIcon, d as $$JavaIcon, e as $$DockerIcon, f as $$PostGressIcon, g as $$FlutterIcon, h as $$NextJsIcon, i as $$Stripe, j as $$Index, k as $$Button, l as $$Icon, L as LINKS } from '../../chunks/Stripe_AGOFaY4y.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, f as addAttribute } from '../../chunks/astro/server_BMtRqVYS.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_QbfUtCAU.mjs';
+import { $ as $$ReactIcon, a as $$TailwindIcon, b as $$AstroIcon, c as $$SpringIcon, d as $$JavaIcon, e as $$DockerIcon, f as $$PostGressIcon, g as $$FlutterIcon, h as $$NextJsIcon, i as $$Stripe, j as $$Index, k as $$Button, l as $$Icon, L as LINKS } from '../../chunks/Stripe_UgWJCZ0K.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro = createAstro("https://ignaciomg.xyz/");
@@ -11,7 +10,7 @@ const $$ = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$;
   const pages = [
     {
-      slug: void 0,
+      slug: undefined,
       title: "undefined",
       text: "undefined",
       text2: "undefined",
@@ -107,7 +106,7 @@ const $$ = createComponent(($$result, $$props, $$slots) => {
   const { title, text, text2, iconList, image, github, website } = page;
   return renderTemplate` ${renderComponent($$result, "Layout", $$Layout, { "title": slug ? slug : "UndefinedProject", "description": "" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="mt-8 text-white m-auto p-4 flex flex-col gap-4 md:gap-6 max-w-7xl overflow-hidden relative w-full sm:p-8 md:p-12 lg:max-h-[800px]"> <div class="text-white flex align-center align-middle gap-4"> <a href="/" class="bg-neutral-900 hover:bg-neutral-800 top-4 left-4 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg
         text-center align-center h-fit">Back</a> <span class="text-middle"> <h1 class="text-xl sm:text-2xl md:text-4xl font-bold h-fit"> ${title} </h1> </span> </div> <div class="md:col-span-2 md:row-span-4 gap-4 grid sm:gap-2 md:grid-cols-2 md:gap-3 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4"> <div class="md:col-span-2 md:row-span-4 flex flex-col gap-4"> ${renderComponent($$result2, "Card", $$Index, { "title": "Objetivo y Funcionalidades", "colSpan": "md:col-span-2", "rowSpan": "md:row-span-4", "body": text })} ${renderComponent($$result2, "Card", $$Index, { "title": "Tecnolog\xEDas y Aprendizaje", "colSpan": "md:col-span-2", "rowSpan": "md:row-span-4", "body": text2 })} </div> <div class="md:col-span-2 md:row-span-4"> <div class="rounded-xl"> <img class="rounded-xl"${addAttribute(image, "src")}${addAttribute(`${title}`, "alt")}> </div> <div class="flex flex-col sm:flex-row gap-6 w-full items-center justify-between mt-6 sm:mt-4"> <div class="flex gap-6 w-full items-center ml-3 md:ml-1"> <a${addAttribute(github, "href")} aria-label="github profile" target="_blank"> ${renderComponent($$result2, "Button", $$Button, { "aria-label": "github profile" }, { "default": ($$result3) => renderTemplate` ${renderComponent($$result3, "Icon", $$Icon, { "name": "ri:github-fill", "class": "h-6" })} <span class="sr-only">GitHub Project</span> ` })} </a> ${website && renderTemplate`<a${addAttribute(website, "href")} aria-label="github profile" target="_blank"> ${renderComponent($$result2, "Button", $$Button, { "aria-label": "github profile" }, { "default": ($$result3) => renderTemplate` ${renderComponent($$result3, "Icon", $$Icon, { "name": "ri:link", "class": "h-6" })} <span class="sr-only">Website</span> ` })} </a>`} </div> <div class="flex gap-6 w-full items-center sm:justify-right mr-2 ml-4"> ${iconList.map((Icon2) => renderTemplate`${renderComponent($$result2, "Icon", Icon2, {})}`)} </div> </div> <div> <a class="flex gap-6 w-full items-align h-30"${addAttribute(LINKS.github, "href")} aria-label="github profile" target="_blank"></a> </div> </div> </div> </main> ` })}`;
-}, "C:/Users/Nacho/Desktop/repos/astro-bento-portfolio/src/pages/projects/[...slug].astro", void 0);
+}, "C:/Users/Nacho/Desktop/repos/astro-bento-portfolio/src/pages/projects/[...slug].astro", undefined);
 
 const $$file = "C:/Users/Nacho/Desktop/repos/astro-bento-portfolio/src/pages/projects/[...slug].astro";
 const $$url = "/projects/[...slug]";

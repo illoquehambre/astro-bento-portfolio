@@ -1,6 +1,4 @@
-import { c as createAstro, a as createComponent, r as renderTemplate, d as renderSlot, e as renderHead, u as unescapeHTML, f as addAttribute } from './astro/server_Bmc84dX9.mjs';
-import 'kleur/colors';
-import 'clsx';
+import { c as createAstro, a as createComponent, r as renderTemplate, d as renderSlot, e as renderHead, u as unescapeHTML, f as addAttribute } from './astro/server_BMtRqVYS.mjs';
 /* empty css                         */
 
 var __freeze = Object.freeze;
@@ -69,6 +67,6 @@ const $$BasicLayout = createComponent(($$result, $$props, $$slots) => {
     dateModified: frontmatter?.pubDate || (/* @__PURE__ */ new Date()).toISOString()
   };
   return renderTemplate(_a || (_a = __template(['<html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator"', "><title>", '</title><meta name="description"', `><meta name="robots" content="/favicon/sitemap-index.xml"><!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn --><meta property="og:title"`, '><meta property="og:description"', '><meta property="og:type" content="website"><meta property="og:url"', '><meta property="og:image"', '><!-- Basic Twitter Card tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title"', '><meta name="twitter:description"', '><meta name="twitter:image"', '><link rel="preconnect" href="https://cdn.fontshare.com"><script type="application/ld+json">', "<\/script>", '</head> <body class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"> ', " ", " </body></html>"])), addAttribute(Astro2.generator, "content"), title, addAttribute(description, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(Astro2.url.origin, "content"), addAttribute(image || "https://gianmarco.xyz/og-image.png", "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(image || "https://gianmarco.xyz/og-image.png", "content"), unescapeHTML(JSON.stringify(schema)), renderHead(), renderSlot($$result, $$slots["loader"]), renderSlot($$result, $$slots["default"]));
-}, "C:/Users/Nacho/Desktop/repos/astro-bento-portfolio/src/layouts/BasicLayout.astro", void 0);
+}, "C:/Users/Nacho/Desktop/repos/astro-bento-portfolio/src/layouts/BasicLayout.astro", undefined);
 
 export { $$BasicLayout as $ };
