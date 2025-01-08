@@ -44,7 +44,7 @@ export default defineConfig({
     icon(),
     svelte(),
   ],
-  output: "server",
+  output: "static",
   adapter: vercel(),
   vite: {
     server: {
